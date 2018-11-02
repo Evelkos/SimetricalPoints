@@ -7,10 +7,16 @@
 
 class TestGenerator
 {
+    private:
+    static int lastTestID;
+
     public:
         TestGenerator();
         ~TestGenerator();
-        void generateTest(int testNumber, int numberOfPoints);
+        void generateTests(int numberOfTests, int pointsPerTest);
+
+    private:
+        void createTestUnit(int numberOfPoints);
         void getPoints(std::fstream &testFile, int numberOfPoints);
 };
 
