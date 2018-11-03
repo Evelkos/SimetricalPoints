@@ -26,7 +26,7 @@ TestGenerator::~TestGenerator()
 void TestGenerator::createTestUnit(int numberOfPoints) {
     std::fstream testFile;
     testFile.open(createTestname(++lastTestID) , std::ios::out);
-    testFile << numberOfPoints << '\n';
+   // testFile << numberOfPoints << '\n';
     getPoints(testFile, numberOfPoints);
     testFile.close();
 }

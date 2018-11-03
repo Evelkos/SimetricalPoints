@@ -13,6 +13,14 @@ Point2D::Point2D(int coordinateX, int coordinateY) : x(coordinateX), y(coordinat
 Point2D::~Point2D()
 { }
 
+void Point2D::setX(int n) {
+    x = n;
+}
+
+void Point2D::setY(int n) {
+    y = n;
+}
+
 void Point2D::setRandomX(int minX, int maxX) {
     x = (int) rand() % (maxX - minX + 1) + minX;
 }

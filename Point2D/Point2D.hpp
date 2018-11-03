@@ -12,8 +12,11 @@ class Point2D
         ~Point2D();
         int getX();
         int getY();
+        void setX(int n);
+        void setY(int n);
         void setRandomXY(int minX, int maxX, int minY, int maxY);
         void setRandomXY();
+    private:
         void setRandomX(int minX, int maxX);
         void setRandomY(int minY, int maxY);
 };
