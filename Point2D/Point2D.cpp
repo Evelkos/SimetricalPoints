@@ -1,7 +1,10 @@
 #include "Point2D.hpp"
+#include <algorithm> // swap()
+/*
 #include <cstdlib>
 #include <cstdio>
 #include <ctime>
+*/
 #include <climits>
 
 Point2D::Point2D() : x(0), y(0)
@@ -36,6 +39,10 @@ void Point2D::setRandomXY(int minX, int maxX, int minY, int maxY) {
 
 void Point2D::setRandomXY() {
     setRandomXY(0, INT_MAX, 0, INT_MAX);
+}
+
+void Point2D::reflectOverYEqualsX() {
+    std::swap(x, y);
 }
 
 int Point2D::getX() {

@@ -1,7 +1,7 @@
+#include <stdlib.h>
+
 #ifndef POINT2D_HPP
 #define POINT2D_HPP
-
-#include <stdlib.h>
 
 class Point2D
 {
@@ -16,6 +16,7 @@ class Point2D
         void setY(int n);
         void setRandomXY(int minX, int maxX, int minY, int maxY);
         void setRandomXY();
+        void reflectOverYEqualsX();
     private:
         void setRandomX(int minX, int maxX);
         void setRandomY(int minY, int maxY);
