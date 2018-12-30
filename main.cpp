@@ -1,23 +1,26 @@
 #include <iostream>
-#include <cstdlib>
-#include <cstdio>
-#include <ctime>
-#include <string>
-#include <sstream>
-
-#include "./Point2D/Point2D.hpp"
-#include "./TestGenerator.hpp"
+#include "./TestReader/TestReader.hpp"
+#include "MyAlgorithm.hpp"
+#include "BruteForceAlgorithm/BruteForceAlgorithm.hpp"
 
 using namespace std;
 
-int main(int argc, char* argv[])
+int main()
 {
-    srand(time(NULL));      // potrzebne do generacji losowych wspolrzednych dla Point2D
-    TestGenerator testGenerator;
+    vector<Point2D> testUnit;
+    MyAlgorithm alg;
+    BruteForceAlgorithm brt;
+    TestReader tr;
+    testUnit = tr.readTestFile("./tests/test14.txt");
 
-    if(argc == 1)   testGenerator.generateTests(1, 100);
-    else if (argc == 2)     testGenerator.generateTests(1, atoi(argv[1]));
-    else if (argc == 3)     testGenerator.generateTests(atoi(argv[1]), atoi(argv[2]));
+    std::cout << "Moj algorytm:" << std::endl;
+    std::vector<Point2D> result = alg.getMinRectangle(testUnit);
+    std::cout << "min x = " << result[0].getX() << " max y = " << result[0].getY() << " max x = " << result[1].getX() << " min y = " << result[1].getY() << std::endl;
+
+    std::cout << "\n\nBrute force:" << std::endl;
+    result.clear();
+    result = brt.getMinRectangle(testUnit);
+    std::cout << "min x = " << result[0].getX() << " max y = " << result[0].getY() << " max x = " << result[1].getX() << " min y = " << result[1].getY() << std::endl;
 
     return 0;
 }
