@@ -4,14 +4,14 @@
 MyAlgorithm::MyAlgorithm() {}
 MyAlgorithm::~MyAlgorithm(){}
 
-void MyAlgorithm::checkCases(std::vector<Point2D> &result, std::vector<Point2D> &finalPoints, int cost1, int cost2, int cost3, int cost4) {
+void MyAlgorithm::checkCases(std::vector<Point2D> &result, std::vector<Point2D> &recVec, int cost1, int cost2, int cost3, int cost4, std::vector<Point2D> points) {
     int combination[] = {0, 3, 12, 15, 48, 51, 60, 63, 192, 195, 204, 207, 240, 243, 252};
     int reflectedPointsNum = -1;
     int minPerimeret = -1;
     int combinationLength = sizeof(combination) / sizeof(combination[1]);
     for (int i = 0 ; i < combinationLength ; i++) {
         int cost = countCosts(combination[i], cost1, cost2, cost3, cost4);
-        updateMinRectangle(result, minPerimeret, reflectedPointsNum, combination[i], finalPoints, cost);
+        updateMinRectangle(result, minPerimeret, reflectedPointsNum, combination[i], recVec, points);
     }
     std::cout << "minPerimeret = " << minPerimeret << std::endl;
     std::cout << "reflectedPointsNum = " << reflectedPointsNum << std::endl << std::endl;
@@ -35,9 +35,9 @@ void MyAlgorithm::dividePointsIntoUpperAndBottomGroup(std::vector<Point2D> point
     }
 }
 
-std::vector<Point2D> MyAlgorithm::findMinRectangle(std::vector<Point2D> &rectanglesSurroundingConvexHulls, int cost1, int cost2, int cost3, int cost4) {
+std::vector<Point2D> MyAlgorithm::findMinRectangle(std::vector<Point2D> &rectanglesSurroundingConvexHulls, int cost1, int cost2, int cost3, int cost4, std::vector<Point2D> points) {
     std::vector<Point2D> result;
-    checkCases(result, rectanglesSurroundingConvexHulls, cost1, cost2, cost3, cost4);
+    checkCases(result, rectanglesSurroundingConvexHulls, cost1, cost2, cost3, cost4, points);
     return result;
 }
 
@@ -49,26 +49,47 @@ std::vector<Point2D> MyAlgorithm::getMinRectangle(std::vector<Point2D> points) {
 
     upperRec = findExtremePointsOfRectangle(upperG);                    //2
     bottomRec = findExtremePointsOfRectangle(bottomG);
+
+    std::vector<Point2D> intersection, intersectionCopy;
+    intersection = getIntersectionArea(upperRec, bottomRec);
+    intersectionCopy = intersection;
+    separateIntersectionPointsFromRectangles(bottomG, intersection);
+    separateIntersectionPointsFromRectangles(upperG, intersectionCopy);
+
+    upperRec = findExtremePointsOfRectangle(upperG);                    //6
+    bottomRec = findExtremePointsOfRectangle(bottomG);
+
+
 /*
     std::cout << "upperG:\n";
     showVector(upperG);
     std::cout << "bottomG:\n";
     showVector(bottomG);
 */
+
     reflectRectangle(upperRec, std::vector<Point2D>());                 //3
+    std::vector<Point2D> intersectionAfterUpperRecReflection, intersUpprG, intersBottG;    //4
 
-    std::vector<Point2D> intersectionArea, intersUpprG, intersBottG;    //4
+    intersectionAfterUpperRecReflection = getIntersectionArea(upperRec, bottomRec);        //5
+    std::cout<<"\nintersectionAfterUpperRecReflection:\n";
+    showVector(intersectionAfterUpperRecReflection);
+    std::cout<<"\nbottomG:\n";
+    showVector(bottomG);
 
-    intersectionArea = getIntersectionArea(upperRec, bottomRec);        //5
-    int intersectionAreaNumberOfPoints = intersectionArea.size();
-    intersBottG = separateIntersectionPointsFromRectangles(bottomG, intersectionArea);
-    for (int i = 0 ; i < intersectionAreaNumberOfPoints ; i++) intersBottG.pop_back();
+    int intersectionAfterUpperRecReflectionPNum = intersectionAfterUpperRecReflection.size();
+    intersBottG = separateIntersectionPointsFromRectangles(bottomG, intersectionAfterUpperRecReflection);
+    for (int i = 0 ; i < intersectionAfterUpperRecReflectionPNum ; i++) intersBottG.pop_back();
 
-    intersectionArea = getIntersectionArea(upperRec, bottomRec);
+    std::cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nintersBottG:\n";
+    showVector(intersBottG);
+
+   // intersectionAfterUpperRecReflection.clear();
+    intersectionAfterUpperRecReflection = getIntersectionArea(upperRec, bottomRec);
+  //  intersectionAfterUpperRecReflectionPNum = intersectionAfterUpperRecReflection.size();
     reflectRectangle(upperRec, std::vector<Point2D>());
-    reflectRectangle(intersectionArea, std::vector<Point2D>());
-    intersUpprG = separateIntersectionPointsFromRectangles(upperG, intersectionArea);
-    for (int i = 0 ; i < intersectionAreaNumberOfPoints ; i++) intersUpprG.pop_back();
+    reflectRectangle(intersectionAfterUpperRecReflection, std::vector<Point2D>());
+    intersUpprG = separateIntersectionPointsFromRectangles(upperG, intersectionAfterUpperRecReflection);
+    for (int i = 0 ; i < intersectionAfterUpperRecReflectionPNum ; i++) intersUpprG.pop_back();
 
     std::vector<Point2D> intersUpperRec, intersBottomRec;
     upperRec = findExtremePointsOfRectangle(upperG);                    //6
@@ -80,7 +101,7 @@ std::vector<Point2D> MyAlgorithm::getMinRectangle(std::vector<Point2D> points) {
     if(bottomRec.size() == 0) { bottomRec.push_back(points[0]); bottomRec.push_back(points[0]); }
     if(intersUpperRec.size() == 0) { intersUpperRec.push_back(points[0]); intersUpperRec.push_back(points[0]); }
     if(intersBottomRec.size() == 0) { intersBottomRec.push_back(points[0]); intersBottomRec.push_back(points[0]); }
-/*
+
     std::cout << "upperRec:\n";
     showVector(upperRec);
     std::cout << "upperG.size() = " << upperG.size() << std::endl << std::endl;
@@ -96,24 +117,26 @@ std::vector<Point2D> MyAlgorithm::getMinRectangle(std::vector<Point2D> points) {
     std::cout << "intersBottomRec:\n";
     showVector(intersBottomRec);
     std::cout << "intersBottG.size() = " << intersBottG.size() << std::endl << std::endl;
-*/
+
     std::vector<Point2D> rectanglesSurroundingConvexHulls = mergeVectors(upperRec, bottomRec, intersUpperRec, intersBottomRec);     //8
-    /*
+
     std::cout << "rectanglesSurroundingConvexHulls:\n";
     showVector(rectanglesSurroundingConvexHulls);
     std::cout << "rectanglesSurroundingConvexHulls.size() = " << rectanglesSurroundingConvexHulls.size() << std::endl << std::endl;
-*/
-    result = findMinRectangle(rectanglesSurroundingConvexHulls, upperG.size(), bottomG.size(), intersUpprG.size(), intersBottG.size());
+
+    result = findMinRectangle(rectanglesSurroundingConvexHulls, upperG.size(), bottomG.size(), intersUpprG.size(), intersBottG.size(), points);
     result = findExtremePointsOfRectangle(result);
 
     return result;
 }
 
+/*
 bool MyAlgorithm::isInArea(Point2D point, std::vector<Point2D> area) {
     std::vector<Point2D> vec;
     vec.push_back(point);
     return getIntersectionArea(vec, area).size() > 0;
 }
+*/
 
 std::vector<Point2D> MyAlgorithm::mergeVectors(std::vector<Point2D> &r1, std::vector<Point2D> &r2, std::vector<Point2D> &r3, std::vector<Point2D> &r4) {
     std::vector<Point2D> result = sumVectors(r1, r2);

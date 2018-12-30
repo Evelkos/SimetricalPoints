@@ -11,7 +11,7 @@ int main()
     MyAlgorithm alg;
     BruteForceAlgorithm brt;
     TestReader tr;
-    testUnit = tr.readTestFile("./tests/test14.txt");
+    testUnit = tr.readTestFile("./tests/test25.txt");
 
     std::cout << "Moj algorytm:" << std::endl;
     std::vector<Point2D> result = alg.getMinRectangle(testUnit);

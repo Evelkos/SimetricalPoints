@@ -90,11 +90,63 @@ void chooseSmallerRectangle(std::vector<Point2D> &minRectangle, int &perimeterOf
     }
 }
 
+bool isInArea(Point2D point, std::vector<Point2D> area) {
+    std::vector<Point2D> vec;
+    vec.push_back(point);
+    return getIntersectionArea(vec, area).size() > 0;
+}
+
+int countPointsInArea(std::vector<Point2D> points, std::vector<Point2D> area) {
+    int sum = 0;
+    area = findExtremePointsOfRectangle(area); // na wszelki wypadek
+    for(unsigned i = 0 ; i < points.size() ; i++) {
+        if(isInArea(points[i], area))
+            sum++;
+    }
+    return sum;
+}
+
+void chooseSmallerRectangleXXX(std::vector<Point2D> &minRectangle, int &perimeterOfminRectangle, int &reflectedPointsOfMinRectangle, std::vector<Point2D> newRectangle, std::vector<Point2D> points) {
+    int perimeterOfNewRectangle = countPerimeter(newRectangle);
+/*
+    std::cout << "Prostokat" << std::endl;
+    showVec(newRectangle);
+    std::cout << "perimeter = " << perimeterOfNewRectangle << std::endl;
+    std::cout << "reflected = " << reflectedPoints << std::endl << std::endl;
+*/
+    if (minRectangle.size() < 1 || perimeterOfNewRectangle < perimeterOfminRectangle) {
+        unsigned pointsOutNewRec = points.size() - countPointsInArea(points, newRectangle);
+        minRectangle.clear();
+        minRectangle = newRectangle;
+        perimeterOfminRectangle = perimeterOfNewRectangle;
+        reflectedPointsOfMinRectangle = pointsOutNewRec;
+    }
+    else if (minRectangle.size() < 1 || perimeterOfNewRectangle == perimeterOfminRectangle) {
+        unsigned pointsOutNewRec = points.size() - countPointsInArea(points, newRectangle);
+        if(pointsOutNewRec < reflectedPointsOfMinRectangle) {
+            minRectangle.clear();
+            minRectangle = newRectangle;
+            perimeterOfminRectangle = perimeterOfNewRectangle;
+            reflectedPointsOfMinRectangle = pointsOutNewRec;
+        }
+    }
+}
+
+/*
 void updateMinRectangle(std::vector<Point2D> &minRectangle, int &parimeterOfMinRectangle, int&reflectedPointsOfMinRectangle, int combination, std::vector<Point2D> &points, int cost) {
     if(combination > pow(2, points.size())) return;
     reflectPoints(combination, points);
-    chooseSmallerRectangle(minRectangle, parimeterOfMinRectangle, reflectedPointsOfMinRectangle, points, cost);
+    chooseSmallerRectangleXXX(minRectangle, parimeterOfMinRectangle, reflectedPointsOfMinRectangle, points, cost);
     reflectPoints(combination, points);
+}
+*/
+
+void updateMinRectangle(std::vector<Point2D> &minRectangle, int &parimeterOfMinRectangle, int&reflectedPointsOfMinRectangle, int combination, std::vector<Point2D> &recVec, std::vector<Point2D> points) {
+    if(combination > pow(2, recVec.size())) return;
+    reflectPoints(combination, recVec);
+    std::vector<Point2D> newRectangle = findExtremePointsOfRectangle(recVec);
+    reflectPoints(combination, recVec);
+    chooseSmallerRectangleXXX(minRectangle, parimeterOfMinRectangle, reflectedPointsOfMinRectangle, newRectangle, points);
 }
 
 void updateMinRectangle(std::vector<Point2D> &minRectangle, int &parimeterOfMinRectangle, int&reflectedPointsOfMinRectangle, int combination, std::vector<Point2D> &points) {

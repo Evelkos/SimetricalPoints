@@ -10,3 +10,5 @@ void compareMinRectangleWithNewRectangle(std::vector<Point2D>&, int&, std::vecto
 int countCosts(int combination, int cost1, int cost2, int cost3, int cost4);
 void updateMinRectangle(std::vector<Point2D>&, int&, int&, int, std::vector<Point2D>&, int);
 void updateMinRectangle(std::vector<Point2D>&, int&, int&, int, std::vector<Point2D>&);
+bool isInArea(Point2D point, std::vector<Point2D> area);
+void updateMinRectangle(std::vector<Point2D> &minRectangle, int &parimeterOfMinRectangle, int&reflectedPointsOfMinRectangle, int combination, std::vector<Point2D> &recVec, std::vector<Point2D> points);
