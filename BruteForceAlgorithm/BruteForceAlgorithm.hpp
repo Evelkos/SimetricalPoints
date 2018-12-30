@@ -1,5 +1,5 @@
 #include "../Point2D/Point2D.hpp"
-#include <vector>
+#include "../RectangleFunctions.hpp"
 
 #ifndef BRUTEFORCEALGORITHM_HPP
 #define BRUTEFORCEALGORITHM_HPP
