@@ -14,11 +14,12 @@ class TestReader
         ~TestReader();
 
         std::vector<Point2D> readTestFile(std::string testFileName);
-        std::vector<Point2D> loadPoints(std::fstream &test);
+        std::vector<Point2D> readFromStandardInput();
 
     protected:
 
     private:
+        std::vector<Point2D> loadPointsFromFile(std::fstream &test);
 };
 
 #endif // TESTREADER_HPP

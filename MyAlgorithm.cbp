@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="MyAlgorithm" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/MyAlgorithm" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="MyAlgorithm" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/MyAlgorithm" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="MyAlgorithm" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="BruteForceAlgorithm/BruteForceAlgorithm.cpp" />
+		<Unit filename="BruteForceAlgorithm/BruteForceAlgorithm.hpp" />
+		<Unit filename="MyAlgorithm/MyAlgorithm.cpp" />
+		<Unit filename="MyAlgorithm/MyAlgorithm.hpp" />
+		<Unit filename="Point2D/Point2D.cpp" />
+		<Unit filename="Point2D/Point2D.hpp" />
+		<Unit filename="RectangleFunctions.cpp" />
+		<Unit filename="RectangleFunctions.hpp" />
+		<Unit filename="TestGenerator/TestGenerator.cpp" />
+		<Unit filename="TestGenerator/TestGenerator.hpp" />
+		<Unit filename="TestReader/TestReader.cpp" />
+		<Unit filename="TestReader/TestReader.hpp" />
+		<Unit filename="UI/UserInterface.cpp" />
+		<Unit filename="UI/UserInterface.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

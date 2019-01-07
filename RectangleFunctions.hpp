@@ -12,3 +12,4 @@ void updateMinRectangle(std::vector<Point2D>&, int&, int&, int, std::vector<Poin
 void updateMinRectangle(std::vector<Point2D>&, int&, int&, int, std::vector<Point2D>&);
 bool isInArea(Point2D point, std::vector<Point2D> area);
 void updateMinRectangle(std::vector<Point2D> &minRectangle, int &parimeterOfMinRectangle, int&reflectedPointsOfMinRectangle, int combination, std::vector<Point2D> &recVec, std::vector<Point2D> points);
+void showVec(std::vector<Point2D>);

@@ -1,0 +1,145 @@
+# depslib dependency file v1.0
+1546778328 source:c:\users\ewelina\desktop\myalgorithm\main.cpp
+	<iostream>
+	"./TestReader/TestReader.hpp"
+	"MyAlgorithm.hpp"
+	"BruteForceAlgorithm/BruteForceAlgorithm.hpp"
+	"UI/UserInterface.hpp"
+
+1542235890 source:c:\users\ewelina\desktop\myalgorithm\point2d\point2d.cpp
+	"Point2D.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<climits>
+
+1542235721 c:\users\ewelina\desktop\myalgorithm\point2d\point2d.hpp
+	<stdlib.h>
+
+1546206522 source:c:\users\ewelina\desktop\myalgorithm\rectanglefunctions.cpp
+	"RectangleFunctions.hpp"
+	<cmath>
+	<iostream>
+	<cstdlib>
+
+1546651485 c:\users\ewelina\desktop\myalgorithm\rectanglefunctions.hpp
+	<vector>
+	"Point2D/Point2D.hpp"
+
+1546652210 source:c:\users\ewelina\desktop\myalgorithm\testreader\testreader.cpp
+	"TestReader.hpp"
+	<iostream>
+
+1546650350 c:\users\ewelina\desktop\myalgorithm\testreader\testreader.hpp
+	<string>
+	<vector>
+	<fstream>
+	"../Point2D/Point2D.hpp"
+
+1546649660 source:c:\users\ewelina\desktop\myalgorithm\myalgorithm\myalgorithm.cpp
+	<iostream>
+	"MyAlgorithm.hpp"
+
+1546206210 c:\users\ewelina\desktop\myalgorithm\myalgorithm\myalgorithm.hpp
+	"../RectangleFunctions.hpp"
+
+1546186636 source:c:\users\ewelina\desktop\myalgorithm\bruteforcealgorithm\bruteforcealgorithm.cpp
+	"BruteForceAlgorithm.hpp"
+	"../RectangleFunctions.hpp"
+	<cstdio>
+	<cstdlib>
+	<cmath>
+	<iostream>
+	<cstdio>
+
+1543264007 c:\users\ewelina\desktop\myalgorithm\bruteforcealgorithm\bruteforcealgorithm.hpp
+	"../Point2D/Point2D.hpp"
+	"../RectangleFunctions.hpp"
+
+1546186636 source:c:\users\ewelina\desktop\myalgorithm — kopia\bruteforcealgorithm\bruteforcealgorithm.cpp
+	"BruteForceAlgorithm.hpp"
+	"../RectangleFunctions.hpp"
+	<cstdio>
+	<cstdlib>
+	<cmath>
+	<iostream>
+	<cstdio>
+
+1543264007 c:\users\ewelina\desktop\myalgorithm — kopia\bruteforcealgorithm\bruteforcealgorithm.hpp
+	"../Point2D/Point2D.hpp"
+	"../RectangleFunctions.hpp"
+
+1542235721 c:\users\ewelina\desktop\myalgorithm — kopia\point2d\point2d.hpp
+	<stdlib.h>
+
+1546205936 c:\users\ewelina\desktop\myalgorithm — kopia\rectanglefunctions.hpp
+	<vector>
+	"Point2D/Point2D.hpp"
+
+1546207574 source:c:\users\ewelina\desktop\myalgorithm — kopia\main.cpp
+	<iostream>
+	"./TestReader/TestReader.hpp"
+	"MyAlgorithm.hpp"
+	"BruteForceAlgorithm/BruteForceAlgorithm.hpp"
+
+1541264915 c:\users\ewelina\desktop\myalgorithm — kopia\testreader\testreader.hpp
+	<string>
+	<vector>
+	<fstream>
+	"../Point2D/Point2D.hpp"
+
+1546206210 c:\users\ewelina\desktop\myalgorithm — kopia\myalgorithm\myalgorithm.hpp
+	"../RectangleFunctions.hpp"
+
+1542235890 source:c:\users\ewelina\desktop\myalgorithm — kopia\point2d\point2d.cpp
+	"Point2D.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<climits>
+
+1546206522 source:c:\users\ewelina\desktop\myalgorithm — kopia\rectanglefunctions.cpp
+	"RectangleFunctions.hpp"
+	<cmath>
+	<iostream>
+	<cstdlib>
+
+1541265528 source:c:\users\ewelina\desktop\myalgorithm — kopia\testreader\testreader.cpp
+	"TestReader.hpp"
+
+1546206199 source:c:\users\ewelina\desktop\myalgorithm — kopia\myalgorithm\myalgorithm.cpp
+	<iostream>
+	"MyAlgorithm.hpp"
+
+1546735542 source:c:\users\ewelina\desktop\myalgorithm\ui\userinterface.cpp
+	<iostream>
+	"UserInterface.hpp"
+	<vector>
+	<cstring>
+	<stdlib.h>
+	<ctime>
+	"../Point2D/Point2D.hpp"
+	"../TestReader/TestReader.hpp"
+	"../BruteForceAlgorithm/BruteForceAlgorithm.hpp"
+	"../MyAlgorithm/MyAlgorithm.hpp"
+	"../RectangleFunctions.hpp"
+	"../TestGenerator/TestGenerator.hpp"
+
+1546560937 c:\users\ewelina\desktop\myalgorithm\ui\userinterface.hpp
+	<stdlib.h>
+
+1546735560 source:c:\users\ewelina\desktop\myalgorithm\testgenerator\testgenerator.cpp
+	"TestGenerator.hpp"
+	<iostream>
+	<fstream>
+	<sstream>
+
+1546734992 c:\users\ewelina\desktop\myalgorithm\testgenerator\testgenerator.hpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	"../Point2D/Point2D.hpp"
+
