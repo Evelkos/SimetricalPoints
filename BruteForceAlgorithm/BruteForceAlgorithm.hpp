@@ -1,3 +1,10 @@
+/*
+Ewelina Chmielewska
+283714
+"Punkty symetryczne"
+*/
+
+
 #include "../Point2D/Point2D.hpp"
 #include "../RectangleFunctions.hpp"
 

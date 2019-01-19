@@ -1,3 +1,10 @@
+/*
+Ewelina Chmielewska
+283714
+"Punkty symetryczne"
+*/
+
+
 #include <string>
 #include <vector>
 #include <fstream>
@@ -14,11 +21,10 @@ class TestReader
         ~TestReader();
 
         std::vector<Point2D> readTestFile(std::string testFileName);
-        std::vector<Point2D> loadPoints(std::fstream &test);
-
-    protected:
+        std::vector<Point2D> readFromStandardInput();
 
     private:
+        std::vector<Point2D> loadPointsFromFile(std::fstream &test);
 };
 
 #endif // TESTREADER_HPP
