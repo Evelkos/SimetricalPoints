@@ -1,10 +1,13 @@
+/*
+Ewelina Chmielewska
+283714
+"Punkty symetryczne"
+*/
+
+
 #include "Point2D.hpp"
 #include <algorithm> // swap()
-/*
-#include <cstdlib>
-#include <cstdio>
-#include <ctime>
-*/
+#include <iostream>
 #include <climits>
 
 Point2D::Point2D() : x(0), y(0)
@@ -22,6 +25,10 @@ void Point2D::setX(int n) {
 
 void Point2D::setY(int n) {
     y = n;
+}
+
+void Point2D::show() {
+    std::cout << "(" << x << ", " << y << ")" << std::endl;
 }
 
 void Point2D::setRandomX(int minX, int maxX) {

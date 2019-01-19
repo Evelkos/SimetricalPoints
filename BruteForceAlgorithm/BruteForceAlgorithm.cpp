@@ -1,3 +1,10 @@
+/*
+Ewelina Chmielewska
+283714
+"Punkty symetryczne"
+*/
+
+
 #include "BruteForceAlgorithm.hpp"
 #include "../RectangleFunctions.hpp"
 #include <cstdio>   //itoa
@@ -18,9 +25,11 @@ std::vector<Point2D> BruteForceAlgorithm::getMinRectangle(std::vector<Point2D> p
     long long maxCombination = pow(2, points.size());
     for (long combination = 0 ; combination < maxCombination ; combination++)
        updateMinRectangle(result, minPerimeter, reflectedPoints, combination, points);
-
+/*
+    std::cout << "Brute force:" << std::endl;
     std::cout << "minPerimeter = " << minPerimeter << std::endl;
     std::cout << "reflectedPoints = " << reflectedPoints << std::endl << std::endl;
+*/
     result = findExtremePointsOfRectangle(result);
     return result;
 }
